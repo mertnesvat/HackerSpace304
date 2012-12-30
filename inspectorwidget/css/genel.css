@@ -1,0 +1,63 @@
+
+#tabs, #ui-datepicker-div, .ui-datepicker{ font-size: 85%; }
+.clear{ clear: both; }
+
+.example-container{ border-bottom: solid 2px #777777; margin: 0 0 20px 40px; padding: 20px; }
+.example-container input{ border: solid 1px #aaa; padding: 4px; width: 175px; }
+
+.ortala
+{
+	margin:0 auto;
+	width:390px;
+	height:40px;
+	padding:15px 0 0 0;
+}
+.ortala input#alt_example_1, .ortala input#alt_example_1_alt
+{
+	float:left;
+	height:35px;
+	font-size:16px;
+	padding:0 10px;
+	width:100px;
+	margin-right:5px;
+}
+
+/* button */
+.datepickerSubmit
+{
+    background: none repeat scroll 0 0 #aaa;
+    border: 1px solid #aaa;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+    color: #333;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1;
+    outline: medium none;
+    padding: 10px 20px 11px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.15s ease-in-out 0s;
+    width: auto;
+    height:39px;
+
+/*
+	border:0;
+	width:100px;
+	height:40px;
+	text-align:center;
+	float:left;
+	font-size:16px;
+	background:#F3BB7C;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+*/	
+	
+	
+}
+/* button */

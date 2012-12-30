@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <title>JB Clock</title>
+        <link rel="stylesheet" href="css/jblocks.css" type="text/css" media="all" />
+        <script type="text/javascript" src="http://www.jbmarket.net/demos/countdown/demo1/js/jquery-1.8.0.min.js"></script>
+        <script type="text/javascript" src="js/timeAction.js" ></script>
+        <script type="text/javascript" src="js/jbclock.js"></script>
+		
+                <script type="text/javascript">
+            $(document).ready(function(){
+            	var olayText = $("#olayText");
+            	var linkText = $("#linkText");
+				var tarihText = $("#alt_example_1");
+				var saatText = $("#alt_example_1_alt");
+				
+				var fullDate = new Date()
+				//Thu May 19 2011 17:25:38 GMT+1000 {}
+				 
+				//convert month to 2 digits
+				var twoDigitMonth = ((fullDate.getMonth().length+1) === 1)? (fullDate.getMonth()+1) : '' + (fullDate.getMonth()+1);
+			  	var currentDate = fullDate.getDate() + "/" + twoDigitMonth + "/" + fullDate.getFullYear();
+				tarihText.attr("value",currentDate);
+				
+				
+				$(".datepickerSubmit").click(function(){
+					  var start = Math.floor(new Date("0/0/0").getTime()/1000);
+						var end = Math.floor((new Date(currentDate)).getTime()/1000);
+						var now = Math.floor(new Date().getTime()/1000);
+					
+					
+						var tarih = tarihText.attr("value");
+						var saatGenel = saatText.attr("value");
+						
+						$("#olay").append("<h1>"+olayText.attr("value")+"</h1>"); 
+						var link = linkText.attr("value");
+						
+						var bol=tarih.split("/");
+						var bolSaat=saatGenel.split(":");
+						var saat = bolSaat[0];
+						var dakika = bolSaat[1];
+						
+						
+						var ay =bol[0];
+						var gun=bol[1];
+						var yil=bol[2];
+						end = Math.floor((new Date(yil+"/"+ay+"/"+gun)).getTime()/1000);
+						
+						end += (saat*60*60)+(dakika*60);
+						
+						ay--;
+						var a = ( (new Date(yil+","+ay+","+gun+","+saat+","+dakika)).getTime() < (new Date()).getTime() );
+						if(!isNaN(end)  && !a)
+						{				
+							$(".divider").hide();			
+						/*
+							tarihText.hide();
+							saatText.hide();
+							$(".datepickerSubmit").hide();
+							//m
+				*/
+							//m-
+						
+							 JBCountDown({
+									secondsColor : "#ffdc50",
+									secondsGlow  : "none",
+				
+									minutesColor : "#9cdb7d",
+									minutesGlow  : "none",
+				
+									hoursColor   : "#378cff",
+									hoursGlow    : "none",
+				
+									daysColor    : "#ff6565",
+									daysGlow     : "none",
+				
+									startDate   : start,
+									endDate     : end,
+									now         : now,
+									
+									timesUp : function(){
+									console.log(createIframeYoutubeFromUrl);
+										var Iframe = createIframeYoutubeFromUrl(link);
+										
+										document.getElementsByTagName('body')[0].innerHTML = Iframe;
+										
+									}
+								});
+						}else alert("Lütfen adam gibi tarih girin..");
+					
+					});
+					alert(end);
+				
+               
+            });
+        </script>
+        
+		<!-- datepicker -->        
+        		<link rel="stylesheet" type="text/css" href="css/genel.css" />
+		<link rel="stylesheet" media="all" type="text/css" href="http://code.jquery.com/ui/1.9.1/themes/smoothness/jquery-ui.css" />
+		<link rel="stylesheet" media="all" type="text/css" href="css/jquery-ui-timepicker-addon.css" />
+        
+        
+      	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+		<script type="text/javascript" src="http://code.jquery.com/ui/1.9.1/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-timepicker-addon.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-sliderAccess.js"></script>
+		
+        <!-- datepicker end -->
+    </head>
+    <body>
+
+        <div class="wrapper">
+        <div id = "olay">
+        <h1></h1>
+        <h4>Countdown</h4>
+        </div>
+        <div class="clock">
+            <!-- Days -->
+            <div class="clock_days">
+                <div class="bgLayer">
+                    <div class="topLayer"></div>
+                    <canvas id="canvas_days" width="188" height="188">
+                    </canvas>
+                    <div class="text">
+                        <p class="val">0</p>
+                        <p class="type_days">Days</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Days -->
+            <!-- Hours -->
+            <div class="clock_hours">
+                <div class="bgLayer">
+                    <div class="topLayer"></div>
+                    <canvas id="canvas_hours" width="188" height="188">
+                    </canvas>
+                    <div class="text">
+                        <p class="val">0</p>
+                        <p class="type_hours">Hours</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Hours -->
+            <!-- Minutes -->
+            <div class="clock_minutes">
+                <div class="bgLayer">
+                    <div class="topLayer"></div>
+                    <canvas id="canvas_minutes" width="188" height="188">
+                    </canvas>
+                    <div class="text">
+                        <p class="val">0</p>
+                        <p class="type_minutes">Minutes</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Minutes -->
+            <!-- Seconds -->
+            <div class="clock_seconds">
+                <div class="bgLayer">
+                    <div class="topLayer"></div>
+                    <canvas id="canvas_seconds" width="188" height="188">
+                    </canvas>
+                    <div class="text">
+                        <p class="val">0</p>
+                        <p class="type_seconds">Seconds</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Seconds -->
+        </div>
+        <div class="divider">
+        	<div class="ortala">
+        	<input type="text" class="textboxlar olay" id="olayText" value="Olay?">
+        	<input type="text" class="textboxlar link" id="linkText" value="Link?">
+            <input type="text" name="alt_example_1" id="alt_example_1" value="09/15/2012" />
+			<input type="text" name="alt_example_1_alt" id="alt_example_1_alt" value="10:15" />
+			<input type="button" name="gonder" value="Okay" class="datepickerSubmit" />
+            </div><!-- ortala end -->
+        </div>
+        </div><!--/wrapper-->
+        
+        <!-- DATEPİCKER START -->
+        <script type="text/javascript"> 
+			$('#alt_example_1').datetimepicker({
+			altField: "#alt_example_1_alt"});
+		</script>
+        <!-- DATEPİCKER END -->
+        
+        
+    </body>
+</html>
